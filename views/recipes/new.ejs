@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Add New Recipe</h2>
+            </div>
+            <div class="card-body">
+                <form action="/recipes" method="POST" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="dishName" class="form-label">Dish Name</label>
+                        <input type="text" class="form-control" id="dishName" name="dishName" required>
+                        <div class="invalid-feedback">
+                            Please enter the dish name.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ingredients" class="form-label">Ingredients (comma-separated)</label>
+                        <textarea class="form-control" id="ingredients" name="ingredients" rows="3" required></textarea>
+                        <div class="invalid-feedback">
+                            Please enter the ingredients.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cookingTime" class="form-label">Cooking Time (minutes)</label>
+                        <input type="number" class="form-control" id="cookingTime" name="cookingTime" min="1" required>
+                        <div class="invalid-feedback">
+                            Please enter a valid cooking time (minimum 1 minute).
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="difficulty" class="form-label">Difficulty</label>
+                        <select class="form-select" id="difficulty" name="difficulty" required>
+                            <option value="">Choose...</option>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select the difficulty level.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="instructions" class="form-label">Instructions</label>
+                        <textarea class="form-control" id="instructions" name="instructions" rows="5" required></textarea>
+                        <div class="invalid-feedback">
+                            Please enter the cooking instructions.
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Add Recipe</button>
+                        <a href="/recipes" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script> 
